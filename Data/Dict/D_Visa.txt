@@ -1,0 +1,23 @@
+VisavisaN00T2BictvisaVISAvisa:0:Tier 2 (B rating) Intra Company Transfers (ICT)
+VisavisaN01T2BrwvzisaVISAvisa:-100:Tier 2 (B rating) Religious Workers
+VisavisaN00T2ArwzvisaVISAvisa:-100:Tier 2 (A rating) Religious Workers
+VisavisaY03T2AGzzvisaVISAvisa:+100000:Tier 2 (A rating) Tier 2 General
+VisavisaN04T5BvwzvisaVISAvisa:-10:Tier 5 (B rating) Voluntary Workers
+VisavisaY05T2AGzzvisaVISAvisa:+100000:Tier 2 (A (SME+)) Tier 2 General
+VisavisaN06T5AexzvisaVISAvisa:-10:Tier 5 (A (Premium)) Exchange
+VisavisaN07T5AexzvisaVISAvisa:-10:Tier 5 (A rating) Exchange
+VisavisaN08T2AictvisaVISAvisa:0:Tier 2 (A (Premium)) Intra Company Transfers (ICT)
+VisavisaN09T5AcszvisaVISAvisa:-10:Tier 5 (A (SME+)) Creative & Sporting
+VisavisaN10T2BGzzvisaVISAvisa:+100000:Tier 2 (B rating) Tier 2 General
+VisavisaN11T5AvwzvisaVISAvisa:-10:Tier 5 (A rating) Voluntary Workers
+VisavisaN12T2AszzvisaVISAvisa:-10:Tier 2 (A (Premium)) Sport
+VisavisaN13T5AcszvisaVISAvisa:-10:Tier 5 (A rating) Creative & Sporting
+VisavisaN14T5AiazvisaVISAvisa:-10:Tier 5 (A rating) International Agreements
+VisavisaN15T5AvwzvisaVISAvisa:-10:Tier 5 (A (Premium)) Voluntary Workers
+VisavisaN16T2AszzvisaVISAvisa:-10:Tier 2 (A rating) Sport
+VisavisaN17T5AcszvisaVISAvisa:-10:Tier 5 (A (Premium)) Creative & Sporting
+VisavisaY18T2AGzzvisaVISAvisa:+100000:Tier 2 (A (Premium)) Tier 2 General
+VisavisaN19T5ArwzvisaVISAvisa:-100:Tier 5 (A rating) Religious Workers
+VisavisaN20T5BrwzvisaVISAvisa:-100:Tier 5 (B rating) Religious Workers
+VisavisaN21T2AictvisaVISAvisa:0:Tier 2 (A rating) Intra Company Transfers (ICT)
+VisavisaN22T2AictvisaVISAvisa:0:Tier 2 (A (SME+)) Intra Company Transfers (ICT)
