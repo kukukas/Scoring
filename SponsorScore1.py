@@ -10,7 +10,7 @@ PageNumPattern="^Page \d+ of \d+"
 
 fileLocationIn='.\Data\Input\R_SponsorsS.txt'                ## debug                                      # read only
 fileLocationIn='.\Data\Input\R_SponsorsTest.txt'             ## test                                       # read only
-fileLocationIn='.\Data\Input\R_Sponsors.txt'                 ## real                                       # read only
+#fileLocationIn='.\Data\Input\R_Sponsors.txt'                 ## real                                       # read only
 fileLocationTokens='.\Data\Dict\D_Token.txt'                # Token : TokenWeight                         # read only
 fileLocationVisa= '.\Data\Dict\D_Visa.txt'                  # VisaCode : VisaWeight :  VisaDescrAsInInput # read only
 fileLocationWordsStam='.\Data\Dict\D_WordsStam.txt'         # Word                                        # read only
@@ -174,7 +174,7 @@ for line in open(fileLocationIn,'r'):
         'words': [],
         'Addr': []
     }
-
+"""
 fout=open(fileLocationStore,'w')
 fout.writelines(json.dumps(element))
 fout.close()
@@ -188,16 +188,33 @@ fout = open(fileLocationWordsToCheck, 'w')
 for x in list(list(sorted(WordsToCheck.items(),key=operator.itemgetter(1),reverse=True))):
     fout.writelines(x[0]+'\n')
 fout.close()
-
+"""
 
 ## 2. Resolve locations
 mygooglemapskey='AIzaSyA7NBT3S-z3GYgZhY067AkuQbNZSTVhblk'
 myarrivaltime=1471943400 # 09:00 on working day
-myhome="KT3 3HH, UK"
+myhome="KT3 3HH"
 gmaps = googlemaps.Client(key=mygooglemapskey)
 
-for x in list(sorted(LocationsToCheck.items(), key=operator.itemgetter(1), reverse=True)):
+delayer=0
+for x in list(sorted(LocationsToCheck.items(), key=operator.itemgetter(1), reverse=True))[0]:
     print (x)
+    delayer+=1
+    if delayer==5:
+        time.sleep(1)
+    try:
+        directions_result = gmaps.directions(myhome,x , mode="transit", arrival_time=myarrivaltime, region="uk")
+        mn10 = directions_result[0]['legs'][0]['duration']['value']//600 * 10
+        ea = directions_result[0]['legs'][0]['end_address']
+        elat = directions_result[0]['legs'][0]['end_location']['lat']
+        elng = directions_result[0]['legs'][0]['end_location']['lng']
+        geocode_result=gmaps.reverse_geocode((elat,elng))
+        print(x,mn10,ea)
+    except:
+        e = sys.exc_info()[0]
+        print("Error",str(e),x)
+
+
 
 
 """
