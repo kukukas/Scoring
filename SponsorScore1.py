@@ -10,7 +10,7 @@ PageNumPattern="^Page \d+ of \d+"
 
 fileLocationIn='.\Data\Input\R_SponsorsS.txt'                ## debug                                      # read only
 fileLocationIn='.\Data\Input\R_SponsorsTest.txt'             ## test                                       # read only
-#fileLocationIn='.\Data\Input\R_Sponsors.txt'                 ## real                                       # read only
+fileLocationIn='.\Data\Input\R_Sponsors.txt'                 ## real                                       # read only
 fileLocationTokens='.\Data\Dict\D_Token.txt'                # Token : TokenWeight                         # read only
 fileLocationVisa= '.\Data\Dict\D_Visa.txt'                  # VisaCode : VisaWeight :  VisaDescrAsInInput # read only
 fileLocationWordsStam='.\Data\Dict\D_WordsStam.txt'         # Word                                        # read only
@@ -208,8 +208,9 @@ for x in list(sorted(LocationsToCheck.items(), key=operator.itemgetter(1), rever
         ea = directions_result[0]['legs'][0]['end_address']
         elat = directions_result[0]['legs'][0]['end_location']['lat']
         elng = directions_result[0]['legs'][0]['end_location']['lng']
+        print ("coord",(elat,elng))
         geocode_result=gmaps.reverse_geocode((elat,elng))
-        print(x,mn10,ea)
+        print("res",x,mn10,ea)
     except:
         e = sys.exc_info()[0]
         print("Error",str(e),x)
