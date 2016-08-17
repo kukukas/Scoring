@@ -1,0 +1,18 @@
+london:<class 'googlemaps.exceptions.Timeout'>
+surrey:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:15:58:25.585679:london:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:15:59:30.062126:surrey:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:00:38.139933:middlesex:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:02:16.019221:yorkshire:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:03:48.602478:essex:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:04:55.469164:berkshire:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:06:17.313949:london london:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:07:18.275044:kent:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:08:52.120428:sussex:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:10:26.315441:hampshire:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:10:40.494859:midlands:<class 'IndexError'>
+15:57:09.387861:16:11:51.749984:west midlands:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:12:56.001408:manchester:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:14:00.171825:hertfordshire:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:15:05.605868:west yorkshire:<class 'googlemaps.exceptions.Timeout'>
+15:57:09.387861:16:16:20.218329:lancashire:<class 'googlemaps.exceptions.Timeout'>

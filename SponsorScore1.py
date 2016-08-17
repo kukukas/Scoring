@@ -1,9 +1,7 @@
 import re
 import sys
 import json
-import googlemaps
 import operator
-import time
 
 PageHeader="Organisation Name Town/City County Tier & Rating Sub Tier"
 PageNumPattern="^Page \d+ of \d+"
@@ -15,35 +13,39 @@ fileLocationTokens='.\Data\Dict\D_Token.txt'                # Token : TokenWeigh
 fileLocationVisa= '.\Data\Dict\D_Visa.txt'                  # VisaCode : VisaWeight :  VisaDescrAsInInput # read only
 fileLocationWordsStam='.\Data\Dict\D_WordsStam.txt'         # Word                                        # read only
 fileLocationEndOfLocation='.\Data\Dict\D_EndOfLocation.txt'# Word                                        # read only
-fileLocationLocationsNotToMap='.\Data\Geo\D_LocationBan.txt' # Location
+#fileLocationLocationsNotToMap='.\Data\Geo\D_LocationBan.txt' # Location
 fileLocationWordsToCheck='.\Data\S_WordsToCheck.txt'   # Word : Count                                # initilalised
-fileLocationLocationsResolved='.\Data\Geo\S_LocationResolved.txt' # Location : address : Postcode : distance
+#fileLocationLocationsResolved='.\Data\Geo\S_LocationResolved.txt' # Location : address : Postcode : distance
 fileLocationLocationsToMap='.\Data\Geo\S_LocationInput.txt' # Location
-fileLocationLocationsError='.\Data\Geo\S_LocationError.txt' # Location : Error
+#fileLocationLocationsError='.\Data\Geo\S_LocationError.txt' # Location : Error
 fileLocationErrors='.\Data\A_Errors.txt'               # Error
 fileLocationStore='.\Data\A_Store.json'               # Error : Location                            # initialised
 
 TokenWeight=dict()
-for line in open(fileLocationTokens,'r'):
-    wToken, wTokenWeight = line.strip().split(':')
-    TokenWeight[wToken.lower()]=int(wTokenWeight)
+with open(fileLocationTokens,'r') as F:
+    for line in F:
+        wToken, wTokenWeight = line.strip().split(':')
+        TokenWeight[wToken.lower()]=int(wTokenWeight)
+F.close()
 
 VisaWeight=dict()
-for line in open(fileLocationVisa, 'r'):
-    wVisaType, wVisaWeight, wVisaDescription = line.strip().split(':')
-    VisaWeight[wVisaDescription] = int(wVisaWeight)
+with open(fileLocationVisa, 'r') as F:
+    for line in F:
+        wVisaType, wVisaWeight, wVisaDescription = line.strip().split(':')
+        VisaWeight[wVisaDescription] = int(wVisaWeight)
+F.close()
 
 WordsStam = set()
-for line in open(fileLocationWordsStam, 'r'):
+with open(fileLocationWordsStam, 'r') as F:
+    for line in F:
         WordsStam.add(line.strip().lower())
+F.close()
 
 EndOfLocation=set()
-for line in open(fileLocationEndOfLocation, 'r'):
-    EndOfLocation.add(line.strip().lower())
-
-DoNotLocate=set()
-for line in open(fileLocationLocationsNotToMap, 'r'):
-    DoNotLocate.add(line.strip().lower())
+with open(fileLocationEndOfLocation, 'r') as F:
+    for line in F:
+        EndOfLocation.add(line.strip().lower())
+F.close()
 
 
 ### 1. Read the input file, build the struct with empty addresses and fill WordsToCheck and LocationInput
@@ -174,46 +176,24 @@ for line in open(fileLocationIn,'r'):
         'words': [],
         'Addr': []
     }
-"""
 fout=open(fileLocationStore,'w')
 fout.writelines(json.dumps(element))
 fout.close()
 
 fout = open(fileLocationLocationsToMap, 'w')
 for x in list(list(sorted(LocationsToCheck.items(),key=operator.itemgetter(1),reverse=True))):
-    fout.writelines(x[0]+'\n')
+    zzz = re.sub('QQQASCIIuponQQQASCII',' upon ',  x[0], flags=re.I)
+    fout.writelines(zzz+'\n')
 fout.close()
 
 fout = open(fileLocationWordsToCheck, 'w')
 for x in list(list(sorted(WordsToCheck.items(),key=operator.itemgetter(1),reverse=True))):
     fout.writelines(x[0]+'\n')
 fout.close()
-"""
 
-## 2. Resolve locations
-mygooglemapskey='AIzaSyA7NBT3S-z3GYgZhY067AkuQbNZSTVhblk'
-myarrivaltime=1471943400 # 09:00 on working day
-myhome="KT3 3HH"
-gmaps = googlemaps.Client(key=mygooglemapskey)
 
-delayer=0
-for x in list(sorted(LocationsToCheck.items(), key=operator.itemgetter(1), reverse=True))[0]:
-    print (x)
-    delayer+=1
-    if delayer==5:
-        time.sleep(1)
-    try:
-        directions_result = gmaps.directions(myhome,x , mode="transit", arrival_time=myarrivaltime, region="uk")
-        mn10 = directions_result[0]['legs'][0]['duration']['value']//600 * 10
-        ea = directions_result[0]['legs'][0]['end_address']
-        elat = directions_result[0]['legs'][0]['end_location']['lat']
-        elng = directions_result[0]['legs'][0]['end_location']['lng']
-        print ("coord",(elat,elng))
-        geocode_result=gmaps.reverse_geocode((elat,elng))
-        print("res",x,mn10,ea)
-    except:
-        e = sys.exc_info()[0]
-        print("Error",str(e),x)
+
+
 
 
 
